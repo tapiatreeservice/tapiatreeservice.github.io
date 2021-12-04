@@ -1,6 +1,9 @@
 // Modal Image Gallery
 function onClick(element) {
-    document.getElementById("modal-image").src = element.src.replace('-t.webp', '.webp');
+    var z = element.src.lastIndexOf('.');
+    var a = element.src.substr(0, z);
+    var b = element.src.substr(z);
+    document.getElementById("modal-image").src = a.substr(0, a.length - 2) + b;
     document.getElementById("modal-wrap").style.display = "block";
     var captionText = document.getElementById("caption");
     captionText.innerHTML = element.alt;
@@ -43,7 +46,7 @@ function toggleFunction() {
     document.head.append(create("script", [{ key: "id", value: "twitter-wjs" }, { key: "src", value: "https://platform.twitter.com/widgets.js" }]))
     document.head.append(create("script", [{ key: "type", value: "text/javascript" }, { key: "src", value: "https://platform.linkedin.com/in.js" }]))
 
-//    <script src="" type="text/javascript">lang: en_US</script>
+    //    <script src="" type="text/javascript">lang: en_US</script>
 
 
 })()

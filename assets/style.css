@@ -283,3 +283,6 @@ a.twitter-share-button{color: #fff;}
   justify-content: space-evenly;
   align-items: center;
 }
+.ca-portfolio .ca-row-padding{
+  padding-top:16px;
+}
