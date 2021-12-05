@@ -1,13 +1,3 @@
-// Modal Image Gallery
-function onClick(element) {
-    var z = element.src.lastIndexOf('.');
-    var a = element.src.substr(0, z);
-    var b = element.src.substr(z);
-    document.getElementById("modal-image").src = a.substr(0, a.length - 2) + b;
-    document.getElementById("modal-wrap").style.display = "block";
-    var captionText = document.getElementById("caption");
-    captionText.innerHTML = element.alt;
-}
 
 // Change style of navbar on scroll
 window.onscroll = function () { localScroll() };
@@ -30,6 +20,17 @@ function toggleFunction() {
     }
 }
 (function () {
+
+    function onPortfolioClick(element) {
+        var z = element.src.lastIndexOf('.');
+        var a = element.src.substr(0, z);
+        var b = element.src.substr(z);
+        document.getElementById("modal-image").src = a.substr(0, a.length - 2) + b;
+        document.getElementById("modal-wrap").style.display = "block";
+        var captionText = document.getElementById("caption");
+        captionText.innerHTML = element.alt;
+    }
+
     function create(tagName, attributes) {
         var e = document.createElement(tagName)
         for (var i = 0; i < attributes.length; i++) {
@@ -39,14 +40,17 @@ function toggleFunction() {
         return e
     }
 
+    document.addEventListener('click', function (event) {
+        if (!event.target.matches('.ca-portfolio .ca-hover-opacity')) return;
+        event.preventDefault();
+        onPortfolioClick(event.target);
+    }, false);
+
     document.getElementById("footer-year").innerHTML = new Date().getFullYear();
     document.getElementsByTagName("head")
     document.head.append(create("link", [{ key: "rel", value: "stylesheet" }, { key: "href", value: "/assets/fa/font-awesome.min.css" }]))
     document.head.append(create("script", [{ key: "id", value: "facebook-jssdk" }, { key: "src", value: "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0" }]))
     document.head.append(create("script", [{ key: "id", value: "twitter-wjs" }, { key: "src", value: "https://platform.twitter.com/widgets.js" }]))
     document.head.append(create("script", [{ key: "type", value: "text/javascript" }, { key: "src", value: "https://platform.linkedin.com/in.js" }]))
-
-    //    <script src="" type="text/javascript">lang: en_US</script>
-
 
 })()

@@ -286,3 +286,6 @@ a.twitter-share-button{color: #fff;}
 .ca-portfolio .ca-row-padding{
   padding-top:16px;
 }
+.ca-portfolio img.ca-hover-opacity{
+  width:100%
+}
